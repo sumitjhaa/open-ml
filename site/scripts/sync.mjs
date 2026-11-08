@@ -1,0 +1,40 @@
+// Copies each section's notes, images and tutorial sheets into public/. ../markdown-notes stays the single source of truth;
+// the published copy drops emoji markers, which keeps the source files untouched.
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { LECTURES } from '../lib/lectures.mjs';
+import { STEPUPS } from '../lib/stepups.mjs';
+import { CAPTIONS } from '../lib/captions.mjs';
+
+const EMOJI = /(?:[\u{1F300}-\u{1FAFF}]|⚠|✍)️?[ ]?/gu;
+const LAB = { mle: '/lectures/estimation', 'linear-regression': '/lectures/linear-regression' };
+function publish(file, source) {
+  let md = source
+    .replace(/^(> )⚠️? ?/gm, '$1**Careful.** ').replace(EMOJI, '')
+    .replace(/^# Lecture \w+ — /m, '# ') // section names carry no numbers
+    .replace(/^(# Part \w+ — )Lecture \w+,? /gm, '$1')
+    .replace(/`ml2026\.floodresq\.com\/explore\/([a-z-]+)[^`]*`(?: panel \d+)?/g, (_, k) => `[Open the interactive sections](${LAB[k]})`);
+  for (const [img, text] of Object.entries(CAPTIONS)) { // replace reference-only captions with a description of the picture
+    if (md.includes(img)) md = md.replace(new RegExp(`!\\[[^\\]]*\\]\\(([^)]*${img})\\)\\n\\*[^\\n]*\\*`), (_, url) => `![${text}](${url})\n*${text}*`);
+  }
+  const step = STEPUPS[file];
+  if (!step) return md;
+  const ladder = `<div class="ladder">\n\n## Step-up path\n\n**You need.** ${step.need}\n\n${step.rungs.map((r, i) => `${i + 1}. ${r}`).join('\n')}\n\n**You can stop when** ${step.done}\n\n</div>\n\n`;
+  const at = md.search(/^## Contents|^---$|^# Part/m);
+  md = at < 0 ? md + '\n\n' + ladder : md.slice(0, at) + ladder + md.slice(at);
+  if (step.extra) { const end = md.search(/^# Part C|^## Practice/m), add = `## Also worth knowing\n\n${step.extra}\n\n`; md = end < 0 ? `${md}\n\n${add}` : md.slice(0, end) + add + md.slice(end); }
+  // A one-line $$...$$ would render inline. Give every display equation its own block, so they all look the same.
+  md = md.replace(/^([ \t]*(?:> ?)*)\$\$(.+?)\$\$[ \t]*$/gm, (_, p, eq) => `${p.trimEnd()}\n${p}$$\n${p}${eq.trim()}\n${p}$$\n${p.trimEnd()}`);
+  return md;
+}
+
+mkdirSync('public/notes', { recursive: true });
+mkdirSync('public/tutorials', { recursive: true });
+for (const { notes, sheets } of LECTURES) {
+  for (const s of sheets ?? []) cpSync(`../Tutorials/${s.file}`, `public/tutorials/${s.file}`);
+  for (const { file } of notes) {
+    writeFileSync(`public/notes/${file}.md`, publish(file, readFileSync(`../markdown-notes/${file}.md`, 'utf8')));
+    const img = `../markdown-notes/images/${file.split('_')[0]}`; // e.g. images/L01
+    if (existsSync(img)) cpSync(img, `public/images/${file.split('_')[0]}`, { recursive: true });
+  }
+}
+console.log(`synced ${LECTURES.length} sections`);

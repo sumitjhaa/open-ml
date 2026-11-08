@@ -1,0 +1,9 @@
+Lecture 3  :	https://ml2026.floodresq.com/explore/lecture3
+Lecture 4a :	https://ml2026.floodresq.com/explore/erm			                loss risk
+Lecture 4b :	https://ml2026.floodresq.com/explore/linear-regression		        linear regression
+Lecture 5  : 	https://ml2026.floodresq.com/explore/linear-regression#hessian	    Hessian
+Lecture 6  : 	https://ml2026.floodresq.com/explore/logistic-regression	        Logistic regression
+Lecture 7  :	https://ml2026.floodresq.com/explore/regularization		            Regularisation
+Lecture 8  :	https://ml2026.floodresq.com/explore/ols-ridge-lasso		        Ridge Lasso
+Lecture 9  : 	https://ml2026.floodresq.com/explore/metrics-thresholds		        Thresholds 
+Lecture 11 :	https://ml2026.floodresq.com/explore/svm			                SVM

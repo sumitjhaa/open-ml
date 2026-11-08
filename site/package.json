@@ -1,0 +1,25 @@
+{
+  "name": "ml2026-lecture1",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/sync.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/sync.mjs",
+    "build": "next build",
+    "start": "next start",
+    "pdf": "node scripts/make-pdf.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "katex": "0.16.47",
+    "next": "15",
+    "react": "19",
+    "react-dom": "19",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
+  }
+}
