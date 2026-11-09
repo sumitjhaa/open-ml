@@ -14,7 +14,7 @@ let base = process.argv[2], server;
 if (!base) {
   const port = await freePort();
   base = `http://127.0.0.1:${port}`;
-  server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'start', '-H', '127.0.0.1', '-p', String(port)], { stdio: 'inherit' });
+  server = spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1', '--directory', 'out'], { stdio: 'ignore' });
 }
 try {
   for (let i = 0; ; i++) {

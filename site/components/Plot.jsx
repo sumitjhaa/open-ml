@@ -88,14 +88,18 @@ const GEOMETRY = {
     }
     return <path d={d} />;
   },
-  // data: matrix, top row first, in a domain of [0, cols] by [0, rows]. div: two hues around a neutral zero. Every cell has a hover title.
+  // data: matrix, top row first, in a domain of [0, cols] by [0, rows]. div: two hues around a neutral zero. Every cell has a hover title; dense maps share one, filled in as the pointer moves, to keep the page small.
   heat: ({ data, div, max, min = 0, dense, tone = 1, neg = 4, show, rows, cols, name = (i, j, v) => `${rows?.[i] ?? i}, ${cols?.[j] ?? j}: ${+v.toPrecision(3)}` }, { sx, sy, dom }) => {
     const R = data.length, C = data[0].length, top = max ?? Math.max(1e-9, ...data.flat().map(Math.abs)), bottom = dom[3];
-    return <>
-      {data.map((row, i) => row.map((v, j) => {
+    const hover = e => { const { i, j } = e.target.dataset; if (i !== undefined) e.currentTarget.firstChild.textContent = name(+i, +j, data[+i][+j]); };
+    const cells = data.map((row, i) => row.map((v, j) => {
         const x = sx(j), y = sy(bottom - i), W = sx(j + 1) - x, H = sy(bottom - i - 1) - y, s = Math.max(0, Math.min(1, (Math.abs(v) - min) / (top - min || 1)));
-        return <g key={i + '-' + j}><rect x={x} y={y} width={W} height={H} rx={dense ? 0 : 2} className={dense ? 'dense' : undefined} fill={`color-mix(in srgb, var(--c${div && v < 0 ? neg : tone}) ${Math.round(s * 82)}%, var(--bg))`}><title>{name(i, j, v)}</title></rect>{show && <text x={x + W / 2} y={y + H / 2 + 4} textAnchor="middle">{show(v, i, j)}</text>}</g>;
-      }))}
+        const fill = `color-mix(in srgb, var(--c${div && v < 0 ? neg : tone}) ${Math.round(s * 82)}%, var(--bg))`;
+        if (dense && !show) return <rect key={i + '-' + j} x={x} y={y} width={W} height={H} className="dense" fill={fill} data-i={i} data-j={j} />;
+        return <g key={i + '-' + j}><rect x={x} y={y} width={W} height={H} rx={dense ? 0 : 2} className={dense ? 'dense' : undefined} fill={fill}><title>{name(i, j, v)}</title></rect>{show && <text x={x + W / 2} y={y + H / 2 + 4} textAnchor="middle">{show(v, i, j)}</text>}</g>;
+      }));
+    return <>
+      {dense && !show ? <g onPointerOver={hover}><title />{cells}</g> : cells}
       {rows?.map((l, i) => <text key={'r' + i} className="axis" x={sx(0) - 5} y={(sy(bottom - i) + sy(bottom - i - 1)) / 2 + 4} textAnchor="end">{l}</text>)}
       {cols?.map((l, j) => <text key={'c' + j} className="axis" x={(sx(j) + sx(j + 1)) / 2} y={sy(bottom) - 6} textAnchor="middle">{l}</text>)}
     </>;

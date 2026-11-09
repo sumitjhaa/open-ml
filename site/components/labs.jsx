@@ -3,7 +3,7 @@
 //   lab     relationships and algorithms: sliders, choices, draggable points, linked plots, step-through
 //   drill   formulas and procedures: a fresh problem each time, with the working revealed one step at a time
 //   truths  common confusions: judge each statement, then read why
-import { useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import M from './M';
 import { rich } from './rich';
 import { Mark, Plot } from './Plot';
@@ -31,23 +31,25 @@ const places = step => (String(step).split('.')[1] ?? '').length;
 export function lab({ intro, tex, params = [], derive, plots, stats, status, table, legend, note, takeaway }) {
   return function Lab() {
     const [p, setP] = useState(() => Object.fromEntries(params.map(q => [q.k, q.init ?? 1])));
-    const d = useMemo(() => (derive ? derive(p) : {}), [p]); // eslint-disable-line react-hooks/exhaustive-deps
-    const v = { ...p, ...d };
+    // Sliders follow the pointer at once; the sums and charts catch up when the browser is free.
+    const shown = useDeferredValue(p);
     const set = (k, val) => setP(o => ({ ...o, [k]: val }));
     const snap = (k, val) => {
       const q = params.find(x => x.k === k);
       if (!q) return;
       set(k, +Math.min(q.max, Math.max(q.min, q.min + Math.round((val - q.min) / q.step) * q.step)).toFixed(places(q.step)));
     };
+    const { figs, lines, st, t } = useMemo(() => {
+    const v = { ...shown, ...(derive ? derive(shown) : {}) };
     const renderMark = (m, i) => {
       if (!m.drag) return <Mark key={i} {...m} />;
       const { drag: { x, y, tone }, ...rest } = m, X = typeof x === 'string' ? v[x] : x, Y = typeof y === 'string' ? v[y] : y;
       return <Mark key={i} as="handles" lockX={typeof x !== 'string'} lockY={typeof y !== 'string'} data={[[X, Y, tone]]}
         onDrag={(_, a, b) => { if (typeof x === 'string') snap(x, a); if (typeof y === 'string') snap(y, b); }} {...rest} />;
     };
-    const figs = (plots?.(v) ?? []).map(({ marks, ...f }, i) => <Plot key={i} {...f}>{marks.filter(Boolean).map(renderMark)}</Plot>);
+    return { figs: (plots?.(v) ?? []).map(({ marks, ...f }, i) => <Plot key={i} {...f}>{marks.filter(Boolean).map(renderMark)}</Plot>), lines: stats?.(v) ?? [], st: status?.(v), t: table?.(v) };
+    }, [shown]); // eslint-disable-line react-hooks/exhaustive-deps
     const choices = params.filter(q => q.options), seeds = params.filter(q => q.seed), sliders = params.filter(q => q.min !== undefined);
-    const lines = stats?.(v) ?? [], st = status?.(v), t = table?.(v);
     const panel = (
       <Stack>
         {sliders.map(q => (
