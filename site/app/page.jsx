@@ -1,18 +1,8 @@
 import Link from 'next/link';
-import { LECTURES } from '../lib/lectures.mjs';
-import { Card, Tag } from '../components/ui';
+import { inCourse } from '../lib/lectures.mjs';
+import { CourseGrid as Grid } from '../components/CourseGrid';
 
-const Grid = ({ items, tag }) => (
-  <div className="grid">
-    {items.map(l => (
-      <Card as={Link} key={l.id} href={`/lectures/${l.id}`}>
-        {tag && <Tag>{tag}</Tag>}
-        <h3>{l.title}</h3>
-        <p>{l.explorers.length} interactive sections</p>
-      </Card>
-    ))}
-  </div>
-);
+const LECTURES = inCourse('ml');
 
 export default function Home() {
   return (
@@ -23,6 +13,7 @@ export default function Home() {
       <Grid items={LECTURES.filter(l => !l.sheets)} />
       <h2 className="level-head">Tutorials</h2>
       <Grid items={LECTURES.filter(l => l.sheets)} tag="Tutorial" />
+      <p className="note"><Link href="/references">References</Link></p>
     </div>
   );
 }

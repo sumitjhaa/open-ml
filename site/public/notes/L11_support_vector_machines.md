@@ -1,7 +1,7 @@
 # Support Vector Machines: Margins, Duality, Kernels and Solvers
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia (17 September 2026)
-> Sources: `Lectures/L11_student_support_vector_machines.pdf` (50 slides), `Lectures/L11a_reading_svm_step_by_step.pdf` (7-page reading), `Lectures/L11b_svm_numerical_supplement.pdf` (1-page supplement), `Lectures/L11c_annotated_support_vectors_with_example.pdf` and `Lectures/L11d_annotated_support_vectors_ii.pdf` (board pages) · Previous: [`L10_precision_recall_roc_auc.md`](L10_precision_recall_roc_auc.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L11_student_support_vector_machines.pdf` (50 slides), `sources/course-2026/lectures/L11a_reading_svm_step_by_step.pdf` (7-page reading), `sources/course-2026/lectures/L11b_svm_numerical_supplement.pdf` (1-page supplement), `sources/course-2026/lectures/L11c_annotated_support_vectors_with_example.pdf` and `sources/course-2026/lectures/L11d_annotated_support_vectors_ii.pdf` (board pages) · Previous: [`L10_precision_recall_roc_auc.md`](L10_precision_recall_roc_auc.md)
 
 **How to use this file.** Until now every classifier was logistic regression. Lecture 11 builds a **second classifier slowly**, because the way it is built is a template: (1) say in words what a good line is, (2) turn that into an optimisation problem, (3) solve it and find that **only a few points matter** (the support vectors), (4) notice the data enter **only through inner products**, (5) swap the inner product for a **kernel** to get curved boundaries, (6) ask what it **costs** to solve. Part A is the maths, built one step at a time on **8 emails** you can check by hand. Part B walks all 50 slides. Part B′ covers the reading, the supplement and the board pages. Part C is practice with answers.
 
@@ -717,7 +717,7 @@ Steps 1, 2, 5 are the same as for ridge and logistic regression. **The SVM chang
 
 ## Slide 1 — Title
 
-*Lecture 11: Support Vector Machines — Margins, Duality, Kernels, and Solvers.* Prof. Udit Bhatia, Semester I 2026.
+*Lecture 11: Support Vector Machines — Margins, Duality, Kernels, and Solvers.*
 
 ## Slide 2 — What this lecture builds, and why it is built slowly
 

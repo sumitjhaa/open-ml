@@ -1,7 +1,7 @@
 # Linear Regression: Loss, Least Squares, and Projection
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia, Prof. Krishna Prasad Miyapuram
-> Source: `Lectures/L04a_student_loss_risk_erm.pdf` (33 slides + 6 board pages = 39 pages) and `Lectures/L04b_student_linear_regression_four_routes.pdf` (24 slides, solved classroom copy) · Previous: [`L03_estimating_parameters.md`](L03_estimating_parameters.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L04a_student_loss_risk_erm.pdf` (33 slides + 6 board pages = 39 pages) and `sources/course-2026/lectures/L04b_student_linear_regression_four_routes.pdf` (24 slides, solved classroom copy) · Previous: [`L03_estimating_parameters.md`](L03_estimating_parameters.md)
 
 **How to use this file.** Part A builds the *new* maths Lecture 4 needs, on top of Lectures 1–3 (likelihood, logs, MLE, derivatives, argmin). Most of it is linear algebra: vectors, matrices, column space, rank, gradients of matrix expressions. Part B goes through every page of 4A (including the handwritten board pages) and every slide of 4B. The "work it out" slides in 4A are left blank in the PDF, so they are **fully solved** here, with numbers on the running dataset. Part C is practice.
 
@@ -338,7 +338,7 @@ The PDF footers count 33 slides; six handwritten board pages (pp. 7–12) were i
 
 ## Slide 1 — Title
 
-*Lecture 4A: Linear Regression I — From likelihood to least squares, projection, and uniqueness.* Prof. Udit Bhatia, IIT Gandhinagar, Semester I 2026.
+*Lecture 4A: Linear Regression I — From likelihood to least squares, projection, and uniqueness.*
 
 ## Slide 2 — Course Roadmap: You Are Here
 

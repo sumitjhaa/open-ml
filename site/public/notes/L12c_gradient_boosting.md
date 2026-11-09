@@ -1,7 +1,7 @@
 # Gradient Boosting: Residuals, Newton Leaf Values, Regression and Classification
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 3, slides 42–64), `Lectures/L12a_student_gradient_boosting_regression_notes.pdf` (10-page notes), `Lectures/L12b_student_gradient_boosting_classification_notes.pdf` (14-page notes) · Previous: [`L12b_bagging_random_forests.md`](L12b_bagging_random_forests.md) · Next: [`L12d_adaboost.md`](L12d_adaboost.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 3, slides 42–64), `sources/course-2026/lectures/L12a_student_gradient_boosting_regression_notes.pdf` (10-page notes), `sources/course-2026/lectures/L12b_student_gradient_boosting_classification_notes.pdf` (14-page notes) · Previous: [`L12b_bagging_random_forests.md`](L12b_bagging_random_forests.md) · Next: [`L12d_adaboost.md`](L12d_adaboost.md)
 
 **Lecture 12 files:** [L12a Trees](L12a_decision_trees.md) → [L12b Bagging & random forests](L12b_bagging_random_forests.md) → **[L12c Gradient boosting](L12c_gradient_boosting.md)** → [L12d AdaBoost](L12d_adaboost.md) → [L12e XGBoost & comparison](L12e_xgboost_and_comparison.md)
 

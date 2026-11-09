@@ -1,7 +1,7 @@
 # Bagging and Random Forests: Bootstrap, Averaging, Variance Floor, OOB Error
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 2, slides 22–41), `Lectures/L12c_student_bagging_variance_bias_notes.pdf` (16-page notes: bagging regression trees, bias–variance), `Lectures/L12d_student_bagging_worked_example_on_trees.pdf` (7-page worked example), `Lectures/L12g_student_practice_trees_bagging_forests.pdf` (Parts B–D) · Previous: [`L12a_decision_trees.md`](L12a_decision_trees.md) · Next: [`L12c_gradient_boosting.md`](L12c_gradient_boosting.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 2, slides 22–41), `sources/course-2026/lectures/L12c_student_bagging_variance_bias_notes.pdf` (16-page notes: bagging regression trees, bias–variance), `sources/course-2026/lectures/L12d_student_bagging_worked_example_on_trees.pdf` (7-page worked example), `sources/course-2026/lectures/L12g_student_practice_trees_bagging_forests.pdf` (Parts B–D) · Previous: [`L12a_decision_trees.md`](L12a_decision_trees.md) · Next: [`L12c_gradient_boosting.md`](L12c_gradient_boosting.md)
 
 **Lecture 12 files:** [L12a Trees](L12a_decision_trees.md) → **[L12b Bagging & random forests](L12b_bagging_random_forests.md)** → [L12c Gradient boosting](L12c_gradient_boosting.md) → [L12d AdaBoost](L12d_adaboost.md) → [L12e XGBoost & comparison](L12e_xgboost_and_comparison.md)
 

@@ -1,7 +1,7 @@
 # Introduction to ML: Past and Present (2026)
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia, Prof. Krishna Prasad Miyapuram
-> Source: `Lectures/L01_student_ml_intro_past_present_2026.pdf` (26 slides) · Next: [`L02_mathematical_foundations.md`](L02_mathematical_foundations.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L01_student_ml_intro_past_present_2026.pdf` (26 slides) · Next: [`L02_mathematical_foundations.md`](L02_mathematical_foundations.md)
 
 **How to use this file.** Part A builds every bit of maths Lecture 1 uses, starting from Class 10 (algebra, coordinate geometry, quadratics, basic probability). Part B walks through all 26 slides and links each idea back to Part A. Part C is practice. Strong readers can start at Part B and jump back to Part A when a symbol is unfamiliar.
 
@@ -760,7 +760,7 @@ Each slide: what it says → what it means → the maths behind it (with a link 
 
 ## Slide 1 — Title
 
-*Machine Learning, Lecture 1: Introduction, Past and Present.* Prof. Udit Bhatia (Civil Engineering; CSE) and Prof. Krishna Prasad Miyapuram (Cognitive & Brain Sciences; AI), Semester I 2026.
+*Machine Learning, Lecture 1: Introduction, Past and Present.*
 
 Notice the instructors' backgrounds: civil engineering and brain science. That's why examples throughout (flood depth, rainfall, catchment area) come from real physical systems where wrong predictions have real costs.
 
@@ -786,7 +786,6 @@ Notice the instructors' backgrounds: civil engineering and brain science. That's
 ## Slide 3 — Course Coordinates
 
 - **Codes:** ES 335 (UG), ES 678 (PG).
-- **Instructor:** Prof. Udit Bhatia. **Tutor:** Prof. Krishna Prasad Miyapuram.
 - **Lectures:** J1 Tuesday and K2 Thursday, 14:00–15:20, room 10/103.
 - **Tutorial:** B2 Friday 08:30–09:50, Jagdish Patel / Harsha Patel Learning Theatre.
 - Bring the dedicated course notebook to every lecture and tutorial; changes are announced on the official channel.
@@ -812,7 +811,7 @@ By the end you should be able to:
 2. Describe the ML loop: data → representation → model → decision. → Slide 11
 3. Recognise four ways results mislead: **aggregation, metrics, shortcuts, model capacity**. → Slides 13–21
 4. State the notation $S_{\text{train}}, x, y, f, \ell, R, \hat R$. → Slides 23–26 + Part A §15
-5. Understand course expectations (assignments, AI tools, quizzes, conduct). → see `course-documents/` PDFs
+5. Understand course expectations (assignments, AI tools, quizzes, conduct). → see `sources/course-2026/course-documents/` PDFs
 
 **Guiding question:** *When a model looks impressive, what would make the result untrustworthy?* Keep this question in your head for the whole course.
 

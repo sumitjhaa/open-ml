@@ -1,7 +1,7 @@
 # OLS, Ridge, and Lasso Through One Worked Example
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Source: `Lectures/L08_student_ols_ridge_lasso_worked_example.pdf` (54 slides, with some in-class annotations) · Previous: [`L07_regularization_ridge_lasso_elastic_net.md`](L07_regularization_ridge_lasso_elastic_net.md) · Next: [`L09_metrics_thresholds_costs.md`](L09_metrics_thresholds_costs.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L08_student_ols_ridge_lasso_worked_example.pdf` (54 slides, with some in-class annotations) · Previous: [`L07_regularization_ridge_lasso_elastic_net.md`](L07_regularization_ridge_lasso_elastic_net.md) · Next: [`L09_metrics_thresholds_costs.md`](L09_metrics_thresholds_costs.md)
 
 **How to use this file.** Lecture 7 told the story *correlated predictors → flat valley → small eigenvalue → unstable OLS → ridge/lasso fix*. Lecture 8 **computes every object in that story** for one 4-row dataset and draws it. Part A collects the small amount of new maths (2×2 inverses, crossing lines, gradient-descent rates, the lasso optimality conditions). Part B goes through all 54 slides with every number recomputed. Part C is practice.
 
@@ -190,7 +190,7 @@ Validation error becomes optimistic once you've chosen the $\lambda$ that looked
 
 ## Slide 1 — Title
 
-*Lecture 8: OLS, Ridge, and Lasso Through One Worked Example.* Prof. Udit Bhatia, Semester I 2026. (Annotation: "Assignment 1".)
+*Lecture 8: OLS, Ridge, and Lasso Through One Worked Example.*
 
 ## Slide 2 — What The Previous Lecture Established
 

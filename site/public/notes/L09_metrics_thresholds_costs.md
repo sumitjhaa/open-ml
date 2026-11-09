@@ -1,7 +1,7 @@
 # Metrics, Thresholds, and Asymmetric Costs
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Source: `Lectures/L09_student_metrics_thresholds_costs.pdf` (39 slides: 31 main + 8 appendix) · Previous: [`L08_ols_ridge_lasso_worked_example.md`](L08_ols_ridge_lasso_worked_example.md) · Next: [`L10_precision_recall_roc_auc.md`](L10_precision_recall_roc_auc.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L09_student_metrics_thresholds_costs.pdf` (39 slides: 31 main + 8 appendix) · Previous: [`L08_ols_ridge_lasso_worked_example.md`](L08_ols_ridge_lasso_worked_example.md) · Next: [`L10_precision_recall_roc_auc.md`](L10_precision_recall_roc_auc.md)
 
 **How to use this file.** Part A builds every evaluation tool from scratch: the **confusion matrix**, the **rates** and which denominator each uses, **accuracy and prevalence**, **precision / recall / F1**, the **ROC curve and AUC** (and why AUC is a probability about pairs), the **PR curve**, **calibration**, and **cost-based decisions** with the threshold $\tau^* = c_{FP}/(c_{FP} + c_{FN})$. Part B goes through all 39 slides with the 400-road numbers checked. Part C is practice.
 
@@ -256,7 +256,7 @@ Lines further **up-left** have lower cost. Slide a line of this slope toward the
 
 ## Slide 1 — Title
 
-*Lecture 9: Metrics, Thresholds, and Asymmetric Costs.* Prof. Udit Bhatia, Semester I 2026.
+*Lecture 9: Metrics, Thresholds, and Asymmetric Costs.*
 
 ## Slide 2 — Course Flowchart: What Each Step Added
 

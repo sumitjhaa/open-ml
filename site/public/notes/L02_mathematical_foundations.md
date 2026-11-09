@@ -1,7 +1,7 @@
 # Mathematical Foundations for Learning from Data
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia, Prof. Krishna Prasad Miyapuram
-> Source: `Lectures/L02_student_mathematical_foundations.pdf` (39 slides) · Previous: [`L01_ml_intro_past_present.md`](L01_ml_intro_past_present.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L02_student_mathematical_foundations.pdf` (39 slides) · Previous: [`L01_ml_intro_past_present.md`](L01_ml_intro_past_present.md)
 
 **How to use this file.** Part A builds the *new* maths Lecture 2 needs, on top of Lecture 1's Part A (sets, functions, Σ, vectors, probability, expectation, logs, argmin). Part B goes through all 39 slides. The "In Class / Work It Out" slides are left blank in the PDF, so they are **fully solved** here. Part C is practice.
 

@@ -1,7 +1,7 @@
 # Why Regularization Works: Ridge, Lasso, Elastic Net
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L07_student_regularization_ridge_lasso_elastic_net.pdf` (35 slides), `Lectures/L07a_student_typed_class_notes_regularization.pdf` (9 pages of typed class notes from the 1 September board derivation), `Lectures/L07b_annotated_regularization_board_notes.pdf` (4 board pages)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L07_student_regularization_ridge_lasso_elastic_net.pdf` (35 slides), `sources/course-2026/lectures/L07a_student_typed_class_notes_regularization.pdf` (9 pages of typed class notes from the 1 September board derivation), `sources/course-2026/lectures/L07b_annotated_regularization_board_notes.pdf` (4 board pages)
 > Previous: [`L06_curvature_logistic_regression.md`](L06_curvature_logistic_regression.md) · Next: [`L08_ols_ridge_lasso_worked_example.md`](L08_ols_ridge_lasso_worked_example.md)
 
 **How to use this file.** Part A builds the maths Lecture 7 needs on top of L4–L6: **bias and variance of an estimator**, **why correlated predictors create a weak eigen-direction**, **how the OLS inverse amplifies noise by $1/\mu_j$**, the **ridge** fix $\mu_j\to\mu_j+\lambda$, the **lasso** soft-threshold, the **constraint (budget) view**, **standardisation** and **validation**. Part B goes through all 35 slides; Part B′ walks the typed class notes and the board pages, so nothing written in class is missed. Part C is practice.
@@ -328,7 +328,7 @@ Training error **always** prefers $\lambda = 0$ (OLS already minimises training 
 
 ## Slide 1 — Title
 
-*Lecture 7: Why Regularization Works.* Prof. Udit Bhatia, Civil Engineering; Computer Science and Engineering, Semester I 2026.
+*Lecture 7: Why Regularization Works.*
 
 ## Slide 2 — Start With OLS And Name Every Object
 

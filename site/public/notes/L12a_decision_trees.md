@@ -1,7 +1,7 @@
 # Decision Trees: Entropy, Gain, Growing, Predicting and Pruning
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 1, slides 1–21), `Lectures/L12g_student_practice_trees_bagging_forests.pdf` (Part A of the practice sheet) · Previous: [`L11_support_vector_machines.md`](L11_support_vector_machines.md) · Next: [`L12b_bagging_random_forests.md`](L12b_bagging_random_forests.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 1, slides 1–21), `sources/course-2026/lectures/L12g_student_practice_trees_bagging_forests.pdf` (Part A of the practice sheet) · Previous: [`L11_support_vector_machines.md`](L11_support_vector_machines.md) · Next: [`L12b_bagging_random_forests.md`](L12b_bagging_random_forests.md)
 
 **Lecture 12 is split into five files** because it is long:
 **[L12a Trees](L12a_decision_trees.md)** → [L12b Bagging & random forests](L12b_bagging_random_forests.md) → [L12c Gradient boosting](L12c_gradient_boosting.md) → [L12d AdaBoost](L12d_adaboost.md) → [L12e XGBoost & comparison](L12e_xgboost_and_comparison.md)

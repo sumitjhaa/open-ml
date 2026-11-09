@@ -1,7 +1,7 @@
 # Principal Component Analysis and Maps for Visualisation
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L13b_unsupervised_learning_handbook.pdf` (Chapter 1 and Chapter 4, pp. 6–21 and 61–77 of the file)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L13b_unsupervised_learning_handbook.pdf` (Chapter 1 and Chapter 4, pp. 6–21 and 61–77 of the file)
 
 **What this file is really about:**
 

@@ -1,7 +1,7 @@
 # From Curvature to Logistic Regression
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Source: `Lectures/L06_logistic_regression_1.pdf` (37 slides) · Previous: [`L05_normal_equation_eigendirections_pca.md`](L05_normal_equation_eigendirections_pca.md) · Next: [`L07_regularization_ridge_lasso_elastic_net.md`](L07_regularization_ridge_lasso_elastic_net.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L06_logistic_regression_1.pdf` (37 slides) · Previous: [`L05_normal_equation_eigendirections_pca.md`](L05_normal_equation_eigendirections_pca.md) · Next: [`L07_regularization_ridge_lasso_elastic_net.md`](L07_regularization_ridge_lasso_elastic_net.md)
 
 **How to use this file.** Part A builds the *new* maths Lecture 6 needs, on top of Lectures 1–5: the **Hessian** and the **curvature test** for many variables, then **probability → odds → log-odds → sigmoid**, the **Bernoulli likelihood**, the **vector chain rule** and **Newton's method**. Part B goes through all 37 slides. Every derivation is expanded line by line and checked with numbers on a tiny 6-road dataset that runs through the whole note. Part C is practice with answers.
 
@@ -369,7 +369,7 @@ Final fit (from Newton, slide 34): $\hat\theta = (-3.035,\ 1.214)$, fitted $p = 
 
 ## Slide 1 — Title
 
-*Lecture 6: From Curvature to Logistic Regression.* Prof. Udit Bhatia, Civil Engineering; Computer Science and Engineering, Semester I 2026.
+*Lecture 6: From Curvature to Logistic Regression.*
 
 ## Slide 2 — Course Roadmap: You Are Here
 

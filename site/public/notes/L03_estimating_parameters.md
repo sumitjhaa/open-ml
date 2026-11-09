@@ -1,7 +1,7 @@
 # Estimating Our First Parameters
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia, Prof. Krishna Prasad Miyapuram
-> Source: `Lectures/L03_student_estimating_parameters.pdf` (29 slides); board annotations in `L03a_…` / `L03b_…` · Previous: [`L02_mathematical_foundations.md`](L02_mathematical_foundations.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L03_student_estimating_parameters.pdf` (29 slides); board annotations in `L03a_…` / `L03b_…` · Previous: [`L02_mathematical_foundations.md`](L02_mathematical_foundations.md)
 
 **How to use this file.** Part A builds the *new* maths Lecture 3 needs, on top of Lectures 1–2 (probability, densities, the normal, logs, derivatives, argmin/argmax, Π and likelihood). Part B goes through all 29 slides. The "In Class / Work It Out" steps are left blank in the PDF, so they are **fully solved** here. Part C is practice.
 
@@ -270,7 +270,7 @@ A prior whose posterior has the same family is called **conjugate**. Updating is
 
 ## Slide 1 — Title
 
-*Machine Learning, Lecture 3: Estimating Our First Parameters.* Prof. Udit Bhatia, Semester I 2026.
+*Machine Learning, Lecture 3: Estimating Our First Parameters.*
 
 ## Slide 2 — Course Roadmap: You Are Here
 

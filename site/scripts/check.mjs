@@ -115,9 +115,38 @@ console.log('svd, clustering and pruning checks passed');
 }
 console.log('handbook checks passed');
 
+const mean2 = a => a.reduce((x, y) => x + y, 0) / a.length;
+// Numbers from the ES 335 (2025) cheat sheets and notebooks.
+{ const X = await import('../lib/extended.mjs'), near = (a, b, t = 0.006) => close(a, b, t), last = a => a.at(-1);
+  near(last(X.als(X.RATINGS, 1, { sweeps: 60 })).loss, 3.36, 0.01);
+  const P = last(X.als(X.RATINGS, 1, { sweeps: 60 })), pred = X.mfPredict(P.W, P.H); near(pred[1][0], 4.72, 0.01);
+  const xs = [[0, 0], [0, 1], [1, 0], [1, 1]], hand = { W1: [[1, 1], [1, 1]], b1: [0, -1], w2: [1, -2], b2: 0 };
+  assert.deepEqual(xs.map(x => X.mlpForward(hand, x).z2), [0, 1, 1, 0]);
+  assert.equal(X.mlpParams([784, 128, 10]), 101770); assert.equal(X.mlpParams([4, 3, 2, 1]), 26);
+  const t = [1, 1, 2].map(v => new X.Value(v)), z = t[1].mul(1).add(t[2].mul(2)).add(t[0]), L = z.neg().exp().add(1).inv().log().neg();
+  L.backward(); near(L.data, 0.00248, 0.00001); near(t[0].grad, -0.00247, 0.00001); near(t[2].grad, -0.00495, 0.00001);
+  assert.deepEqual(X.conv2d(X.IMG5, X.KERNEL3), [[12, 12, 17], [10, 17, 19], [9, 6, 14]]);
+  assert.deepEqual(X.conv2d(X.IMG5, X.KERNEL3, 2, 1), [[6, 17, 3], [8, 17, 13], [6, 4, 4]]);
+  assert.equal(X.LENET.reduce((a, r) => a + r[2], 0), 61706); assert.equal(X.convParams(6, 5, 1), 156); assert.equal(X.convParams(16, 5, 6), 2416); assert.equal(X.outSide(64, 3, 1, 2), 32);
+  assert.deepEqual(X.pool2d(X.IMG5, 3, 1)[0], [3, 3, 3]);
+  const b = X.bernoulliNb(X.SPAM.rows, X.SPAM.labels); near(b.posterior([0, 0, 1]), 0.771, 0.001);
+  near(X.bernoulliNb(X.SPAM.rows, X.SPAM.labels, 1).posterior([0, 0, 1]), 0.703, 0.001);
+  near(X.iou([0, 0, 70, 70], [20, 20, 90, 90]), 2500 / 7300, 0.0001);
+  assert.deepEqual(X.nearest(X.TEN_POINTS, [7, 4], 2).map(p => p[0]), [2, 2]);
+  near(X.qUpdate(20, -1, 0.99, 30, 0.2), 21.74, 0.0001); near(X.discounted([0, 0, 1], 0.9), 0.81, 1e-9);
+  near(X.acf([1, 2, 3, 4, 5], 1), 0.4, 1e-9); near(X.rnnRun(0.8, 1, [1, 0, 0, 0, 0])[1], 0.544, 0.001);
+  const ar = X.arFit(X.arSimulate(1, [0.6, 0.3], 500, 2), 2); assert.ok(Math.abs(ar[1] - 0.6) < 0.12 && Math.abs(ar[2] - 0.3) < 0.12, 'AR coefficients');
+  const V = X.valueIteration(X.GRID, 0.9, 30), S = X.startOf(X.GRID); assert.ok(V.at(-1)[S[0]][S[1]] > 0, 'value reaches the start'); assert.deepEqual(V.at(-1), V.at(-2));
+  const q = X.qLearn(X.GRID, { episodes: 400, seed: 4 }); assert.ok(mean2(q.returns.slice(-100)) > 0.2, 'Q-learning improves');
+  const R0 = X.mountainCar(() => 2), R1 = X.mountainCar(t => (t <= 50 ? 0 : 2)); assert.equal(R0.reached, null); assert.ok(R1.reached && R1.reached < 200, 'backing up reaches the flag');
+}
+console.log('extended checks passed');
+
 // Themes: fifteen of each kind, and every one readable.
 { const T = await import('../lib/themes.mjs'); assert.equal(T.LIGHT_THEMES.length, 15); assert.equal(T.DARK_THEMES.length, 15); assert.equal(new Set(T.THEMES.map(t => t.id)).size, 31);
   for (const t of [...T.LIGHT_THEMES, ...T.DARK_THEMES]) { const k = t.tokens; assert.ok(T.contrast(k.fg, k.bg) >= 7, t.name + ' text'); assert.ok(T.contrast(k.muted, k.bg) >= 4.4, t.name + ' muted'); assert.ok(T.contrast(k.onaccent, k.accent) >= 3, t.name + ' on accent'); assert.ok(T.contrast(k.accent, k.bg) >= 3, t.name + ' accent'); for (const c of ['c1', 'c2', 'c3', 'c4']) assert.ok(T.contrast(k[c], k.bg) >= 4.4, t.name + ' ' + c); } }
+// Sidebar chips (.chip in globals.css): text is 45% tone with the foreground, on a 13% tint of the sidebar.
+{ const { LIGHT_THEMES, DARK_THEMES, contrast, mix } = await import('../lib/themes.mjs'); for (const th of [...LIGHT_THEMES, ...DARK_THEMES]) for (const k of ['c1', 'c3', 'c4', 'fg']) { const t = th.tokens; assert.ok(contrast(mix(t[k], t.fg, 0.55), mix(t.side, t[k], 0.13)) >= 4.5, `chip contrast: ${th.name} ${k}`); } }
 console.log('theme checks passed');
 
 // Catalogue rules: section and explorer names carry no numbers, every section has at least ten explorers across all levels.

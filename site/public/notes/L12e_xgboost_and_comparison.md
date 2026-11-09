@@ -1,7 +1,7 @@
 # XGBoost, and Comparing Trees, Bagging and Boosting
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 5, slides 82–96; Part 6, slides 97–102) · Previous: [`L12d_adaboost.md`](L12d_adaboost.md) · Next: [`L12f_supplement_missing_topics.md`](L12f_supplement_missing_topics.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L12_student_trees_bagging_boosting_worked_deck.pdf` (Part 5, slides 82–96; Part 6, slides 97–102) · Previous: [`L12d_adaboost.md`](L12d_adaboost.md) · Next: [`L12f_supplement_missing_topics.md`](L12f_supplement_missing_topics.md)
 
 **Lecture 12 files:** [L12a Trees](L12a_decision_trees.md) → [L12b Bagging & random forests](L12b_bagging_random_forests.md) → [L12c Gradient boosting](L12c_gradient_boosting.md) → [L12d AdaBoost](L12d_adaboost.md) → **[L12e XGBoost & comparison](L12e_xgboost_and_comparison.md)**
 

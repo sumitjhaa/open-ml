@@ -126,6 +126,231 @@ Solve this system directly, rather than computing an inverse. For logistic ridge
     rungs: ['Design columns so a simple model can express the truth.', 'Compare with a baseline, and read the residuals.', 'Make training work: scaling, momentum, and diagnosing the loss curve.', 'Repair probabilities and prune trees on held-out data.', 'State how uncertain the final score is.'],
     done: 'you can say what you would check next when a model disappoints.',
   },
+  L18_matrix_factorisation: {
+    need: 'Dot products, matrix products and least squares.',
+    rungs: ['See ratings as a table with holes.', 'Write one rating as taste times features.', 'Fit only the known cells.', 'Alternate two regressions, or step both factors.', 'Regularise, because too many factors guess at random.'],
+    done: 'you can fit a small rating table by hand and say why a penalty is needed.',
+  },
+  L19_nearest_neighbours: {
+    need: 'Distance between points and the idea of a held-out set.',
+    rungs: ['Predict from the closest stored examples.', 'Choose a distance and scale the features.', 'Choose $K$ on held-out data.', 'See why high dimensions make distances blur.', 'Search faster with trees and hashes.'],
+    done: 'you can pick $K$ honestly and explain when KNN is the wrong tool.',
+  },
+  L20_naive_bayes_networks: {
+    need: 'Conditional probability and the normal density.',
+    rungs: ['Turn a test result around with Bayes’ rule.', 'Assume features are independent given the class.', 'Fit by counting, with smoothing.', 'Compute in logs, and use a normal per feature.', 'Draw dependence as a graph.'],
+    done: 'you can classify an email by hand and explain why adding logs is safe.',
+  },
+  L21_multilayer_perceptrons: {
+    need: 'Logistic regression, matrix products and the chain rule.',
+    rungs: ['See a neuron as a weighted sum and an activation.', 'Find what one neuron cannot do.', 'Add a hidden layer that moves the data.', 'Compute forward, and count the parameters.', 'Train by backpropagation, and watch for its pathologies.'],
+    done: 'you can write the forward and backward pass of a small network by hand.',
+  },
+  L22_automatic_differentiation: {
+    need: 'The chain rule and the multi-layer perceptron.',
+    rungs: ['Record a loss as a graph of simple operations.', 'Multiply upstream by local, backwards.', 'Add gradients where paths meet.', 'Compare forward and reverse mode.', 'Build a small engine.'],
+    done: 'you can run backpropagation on paper and explain why it needs only one sweep.',
+  },
+  L23_convolutional_networks: {
+    need: 'Dot products and multi-layer perceptrons.',
+    rungs: ['See why dense layers waste weights on images.', 'Slide a filter and take dot products.', 'Work out sizes from padding and stride.', 'Pool, and grow the receptive field.', 'Assemble LeNet and count its parameters.'],
+    done: 'you can compute a convolution by hand and predict every shape in a network.',
+  },
+  L24_vision_interpretation_detection: {
+    need: 'Convolutional networks and precision-recall curves.',
+    rungs: ['Separate invariance from equivariance.', 'Find where the evidence lies with a class activation map.', 'Reuse pretrained features with a simple head.', 'Measure a box with IoU.', 'Score detectors, and remove duplicates.'],
+    done: 'you can say what a Grad-CAM shows and how a detector is scored.',
+  },
+  L25_next_token_prediction: {
+    need: 'Softmax classification and multi-layer perceptrons.',
+    rungs: ['Turn text into context and next-character pairs.', 'Count pairs for a baseline.', 'Learn embeddings and concatenate them.', 'Train with cross-entropy.', 'Sample, using a temperature.'],
+    done: 'you can explain how a language model writes one token at a time.',
+  },
+  L26_time_series_recurrent: {
+    need: 'Linear regression and the idea of a held-out set.',
+    rungs: ['Read trend, season and noise.', 'Beat simple baselines.', 'Validate forward in time.', 'Regress on lags.', 'Let a recurrent network learn a memory, and see why gradients vanish.'],
+    done: 'you can forecast honestly and explain why LSTMs were invented.',
+  },
+  L27_reinforcement_learning: {
+    need: 'Expectation and the idea of an update step.',
+    rungs: ['Act, get a reward, and discount the future.', 'Score actions with $Q$.', 'Tie each score to the next with Bellman.', 'Update from experience.', 'Explore, and scale up with networks.'],
+    done: 'you can run a Q-learning update by hand and say why exploration matters.',
+  },
+  L28_additions_es335: {
+    need: 'The earlier lectures on regression, evaluation and trees.',
+    rungs: ['Plot data before trusting a statistic.', 'Encode categories without the dummy trap.', 'Pick metrics that suit the errors and the class balance.', 'Tune with the right search.', 'Know what a tree costs to fit.'],
+    done: 'you can spot these small mistakes in someone else’s analysis.',
+  },
+  L29_training_deep_networks: {
+    need: "Gradient descent and neural networks.",
+    rungs: ["See why plain descent struggles in valleys.","Average gradients with momentum.","Scale each coordinate with RMSProp and Adam.","Schedule the learning rate.","Diagnose first, and then regularise."],
+    done: "you can read a loss curve and say what to change next.",
+  },
+  L30_attention_transformers: {
+    need: "Next-token prediction and softmax.",
+    rungs: ["See why a fixed window is not enough.","Match, mix and project with attention.","Add position, heads and residual blocks.","Mask the future to generate text.","Apply it to images, and connect images with text."],
+    done: "you can compute an attention step by hand and explain how a language model generates.",
+  },
+  L31_generative_models: {
+    need: "Neural networks, normals and KL divergence.",
+    rungs: ["Fit and sample a distribution.","Compress with an autoencoder.","Make codes sampleable with a VAE.","Train against a judge with a GAN.","Reverse noise with diffusion."],
+    done: "you can compare the families and derive the VAE objective.",
+  },
+  L32_probabilistic_ml: {
+    need: "Bayes’ rule, normals and linear regression.",
+    rungs: ["Keep a posterior instead of a point.","Compute integrals by sampling.","Build chains with MCMC.","Approximate with a simple family.","Use the uncertainty to act."],
+    done: "you can say what you are unsure about, and use it.",
+  },
+  L33_ml_systems_responsible: {
+    need: "Evaluation and basic statistics.",
+    rungs: ["See the model as one part of a system.","Make results reproducible.","Monitor for drift.","Run honest experiments.","Explain decisions, measure fairness and be accountable."],
+    done: "you can plan what happens after a model ships.",
+  },
+  L34_beyond_the_syllabus: {
+    need: "The earlier lectures of this course.",
+    rungs: ["Quantify uncertainty without formulas.","Make losses robust and intervals honest.","Blend models carefully.","Cluster and embed through graphs and kernels.","Separate prediction from causation."],
+    done: "you can recognise when one of these tools is the right one.",
+  },
+  D01_losses_from_likelihood: {
+    need: "Probability densities and logarithms.",
+    rungs: ["See a model as a distribution over outputs.","Write the likelihood and take its negative log.","Recover squared error and cross-entropy.","Let the model learn its noise.","Add priors and robust noise."],
+    done: "you can derive a loss from an assumption about noise.",
+  },
+  D02_vector_autograd_outputs: {
+    need: "Scalar autodiff and matrix products.",
+    rungs: ["Read the shape of a Jacobian.","Replace it with a vector-Jacobian product.","Understand minibatch noise.","Initialise so signals survive.","Transform outputs so they are always valid."],
+    done: "you can check the shapes of any backward pass and pick an initialisation.",
+  },
+  D03_vision_language_concepts: {
+    need: "Attention and contrastive ideas.",
+    rungs: ["Train matching pairs with InfoNCE.","Classify using language.","Connect images and text by cross-attention.","Predict through named concepts.","Know the limits of concept models."],
+    done: "you can sketch how a vision-language model works and how to correct a concept model.",
+  },
+  D04_detection_segmentation: {
+    need: "Convolutional networks and intersection over union.",
+    rungs: ["Predict a set of objects.","Assign candidates to targets.","Balance classes with focal loss.","Label every pixel.","Know keypoints, depth and promptable masks."],
+    done: "you can choose a loss and a metric for any spatial task.",
+  },
+  L35_more_machine_learning: {
+    need: "The core lectures of this course.",
+    rungs: ["Handle missing data and rare classes.","Reason about how much data suffices.","Separate, factorise and decode hidden structure.","Learn online and from unlabelled data.","Test hypotheses and model survival."],
+    done: "you can recognise when one of these tools fits your problem.",
+  },
+  D05_pytorch_from_zero: {
+    need: "Python and the idea of a gradient.",
+    rungs: ["Move tensors and read their shapes.","Compute gradients with autograd.","Write a module and a training loop.","Debug by overfitting one batch.","Scale up with mixed precision and checkpoints."],
+    done: "you can write and debug a training pipeline without a template.",
+  },
+  D06_llm_from_scratch: {
+    need: "Attention and PyTorch basics.",
+    rungs: ["Build a tokeniser.","Assemble a complete GPT.","Train and sample from it.","Adapt a model with LoRA.","Answer from documents and evaluate it."],
+    done: "you can explain and implement each part of a language model product.",
+  },
+  D07_architectures: {
+    need: "Convolutions and training basics.",
+    rungs: ["See why plain depth fails.","Normalise activations.","Add residual connections.","Build a U-Net.","Add memory with gates."],
+    done: "you can match an architecture to the failure it fixes.",
+  },
+  D08_advanced_generative: {
+    need: "Variational autoencoders and the diffusion basics.",
+    rungs: ["Derive the forward process.","Derive the noise-prediction loss.","Sample with DDPM and DDIM.","Guide with a condition.","Compare latent diffusion and flow matching."],
+    done: "you can derive and implement a diffusion model.",
+  },
+  D09_graphs_selfsup_deeprl: {
+    need: "Neural networks, attention and Q-learning.",
+    rungs: ["Pass messages on a graph.","Add attention to a graph.","Learn representations without labels.","Derive the policy gradient.","Stabilise deep reinforcement learning."],
+    done: "you can choose a method for graph, unlabelled or reward-driven problems.",
+  },
+  C01_interview_ml_questions: {
+    need: "The core machine learning sections.",
+    rungs: ["Answer the fundamentals precisely.","Derive the standard results.","Discuss models and their limits.","Implement classics from scratch.","Handle the follow-up questions."],
+    done: "you can answer standard technical questions under pressure.",
+  },
+  C02_ml_system_design: {
+    need: "Evaluation, deployment and monitoring basics.",
+    rungs: ["Clarify the goal and the metric.","Plan data and features.","Design retrieval and ranking.","Serve and test safely.","Estimate cost, and monitor."],
+    done: "you can lead a complete ML system design discussion.",
+  },
+  C03_algorithms_in_code: {
+    need: "The maths of the matching lecture.",
+    rungs: ["Write linear models from their equations.","Build a tree, a forest and boosting.","Implement neighbours and naive Bayes.","Write clustering and PCA.","Compare everything through one interface."],
+    done: "you can implement the core algorithms from memory and check them against a library.",
+  },
+  E01_glm_quantile_statespace: {
+    need: "Regression and probability.",
+    rungs: ["Choose a distribution and link.","Fit with reweighted least squares.","Handle exposure and overdispersion.","Predict quantiles.","Track hidden states."],
+    done: "you can pick the right model for counts, skewed amounts, intervals and tracking.",
+  },
+  E02_causal_bandits_tuning: {
+    need: "Regression and probability.",
+    rungs: ["Separate seeing from doing.","Adjust for confounders.","Estimate with weights and doubly robust methods.","Balance exploration and reward.","Tune using few trials."],
+    done: "you can estimate effects honestly and run efficient experiments.",
+  },
+  E03_graphs_optimisers_privacy: {
+    need: "Linear algebra, optimisation and trees.",
+    rungs: ["Pass messages in graphs.","Use proximal and quasi-Newton methods.","Rank by pairs.","Add privacy and federation.","Know how modern boosting differs."],
+    done: "you can apply structure, privacy and advanced optimisers.",
+  },
+  E04_robust_uncertain_compact: {
+    need: "Neural network training.",
+    rungs: ["Attack a model.","Defend it.","Estimate uncertainty.","Shrink a model.","Train across machines."],
+    done: "you can prepare a model for real deployment.",
+  },
+  E05_flows_energy_score: {
+    need: "Diffusion in depth.",
+    rungs: ["Change variables.","Build a flow.","Sample with energy and Langevin.","Match scores.","Use SDEs and one-step models."],
+    done: "you can connect every family of generative model.",
+  },
+  E06_theory_tasks_science: {
+    need: "Neural networks and automatic differentiation.",
+    rungs: ["Read training as a kernel.","Find sparse subnetworks.","Handle sets.","Meta-learn and continue learning.","Solve equations with networks."],
+    done: "you can reason about when and why deep learning works.",
+  },
+  E07_control_3d_interpretability: {
+    need: "Deep reinforcement learning and rendering basics.",
+    rungs: ["Train soft actor-critic.","Learn from logs.","Plan with a model.","Render from images.","Probe, patch and decompose."],
+    done: "you can follow recent work in control, 3D and interpretability.",
+  },
+  F01_lecture_details_ml: {
+    need: "The core lectures of this course.",
+    rungs: ["Prove the minimax inequality.","Tune and evaluate without bias.","Recommend from behaviour.","Extend kernels and sampling.","Forecast with classical methods."],
+    done: "you can fill in the proofs and methods the slides only mention.",
+  },
+  F02_lecture_details_dl: {
+    need: "The core deep learning sections.",
+    rungs: ["Compute any convolution's output.","Choose optimisers and augmentation.","Follow the detector families.","Train a sequence decoder.","Meet the remaining named models."],
+    done: "you can explain each named method from the slides.",
+  },
+  G01_final_audit_ml: {
+    need: "The core machine learning sections.",
+    rungs: ["Name why Rosenbrock is ill-conditioned.", "Condition a multivariate normal.", "Tell Viterbi from posterior decoding.", "Shrink group estimates.", "Read the partial autocorrelation."],
+    done: "you can explain each remaining named method.",
+  },
+  G02_final_audit_dl: {
+    need: "The deep learning architecture, transformer and generative sections.",
+    rungs: ["Compute a causal receptive field.", "Compare attention scores.", "Choose a box loss.", "Diagnose posterior collapse.", "Reason about roofline limits and batching."],
+    done: "you can explain each model named on the slides.",
+  },
+  G03_wider_deep_learning: {
+    need: "The main deep learning sections.",
+    rungs: ["Add a building block.", "Choose an optimiser variant.", "Certify a radius.", "Weigh several tasks.", "Derive generalised advantage."],
+    done: "you can place each textbook topic in context.",
+  },
+  G04_linear_algebra_calculus: {
+    need: "Arithmetic and a little algebra.",
+    rungs: ["Multiply matrices.", "Find eigenvalues.", "Apply each derivative rule.", "Differentiate a quadratic form.", "Evaluate an integral by parts."],
+    done: "you can read any formula in the course.",
+  },
+  G05_probability_statistics: {
+    need: "Fractions, sums and basic calculus.",
+    rungs: ["Use total probability.", "Compute a mean and variance.", "Pick a distribution.", "Build a confidence interval.", "Compute entropy and KL."],
+    done: "you can derive any loss from a likelihood.",
+  },
+  G06_advanced_maths: {
+    need: "Linear algebra, calculus and probability.",
+    rungs: ["Bound a convergence rate.", "Compute a Fourier transform.", "Step an ODE solver.", "Simulate an SDE.", "Compare distribution distances."],
+    done: "you can follow optimiser theory and generative models.",
+  },
   L13_svd_representation_learning: {
     need: 'Eigenvalues, PCA and matrix multiplication.',
     extra: R`**Dimensionality reduction in practice.** Replacing $d$ features by $k$ scores is used for compression, for plotting, and as a preprocessing step that removes weak, noisy directions. Fit it inside the training fold, and choose $k$ by what the downstream task needs and not only by variance kept.`,

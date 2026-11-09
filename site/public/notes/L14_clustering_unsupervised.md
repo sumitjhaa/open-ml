@@ -1,7 +1,7 @@
 # Clustering with K-means
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `Lectures/L13_kmeans_annotated_slides.pdf` (35 slides), `Lectures/L13a_kmeans_handwritten_class_notes.pdf` (3 pages), `Lectures/L13b_unsupervised_learning_handbook.pdf` (Chapter 1 and Chapter 2)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/lectures/L13_kmeans_annotated_slides.pdf` (35 slides), `sources/course-2026/lectures/L13a_kmeans_handwritten_class_notes.pdf` (3 pages), `sources/course-2026/lectures/L13b_unsupervised_learning_handbook.pdf` (Chapter 1 and Chapter 2)
 
 **What this file is really about:**
 

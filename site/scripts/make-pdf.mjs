@@ -20,9 +20,9 @@ try {
   for (let i = 0; ; i++) {
     try {
       const html = await (await fetch(`${base}/lectures/${LECTURES[0].id}/notes/${LECTURES[0].notes[0].id}`)).text();
-      if (html.includes('ml-sensei')) break; // make sure it's this site, not another app on the port
+      if (html.includes('Epocher')) break; // make sure it's this site, not another app on the port
     } catch {}
-    if (i > 60) throw new Error(`no ml-sensei site at ${base} — run \`yarn build\` first or pass a running server URL`);
+    if (i > 60) throw new Error(`no Epocher site at ${base} — run \`yarn build\` first or pass a running server URL`);
     await new Promise(r => setTimeout(r, 500));
   }
   for (const [l, n] of LECTURES.flatMap(x => x.notes.map(y => [x, y]))) {

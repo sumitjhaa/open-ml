@@ -1,0 +1,5 @@
+.DS_Store
+# Downloaded course repositories, too large for git. The site holds local copies of what it serves.
+sources/course-2025/
+sources/course-deep-learning/
+sources/course-probabilistic/

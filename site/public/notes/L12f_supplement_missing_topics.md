@@ -1,7 +1,7 @@
 # Supplement: Syllabus Topics the Lectures Did Not Cover
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia
-> Sources: `course-documents/ml2026_syllabus_calendar_policies_grading.pdf` (lecture calendar, L1–L22), `course-documents/ml2026_course_roadmap_thoughtmap.pdf` · Previous: [`L12e_xgboost_and_comparison.md`](L12e_xgboost_and_comparison.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Sources: `sources/course-2026/course-documents/ml2026_syllabus_calendar_policies_grading.pdf` (lecture calendar, L1–L22), `sources/course-2026/course-documents/ml2026_course_roadmap_thoughtmap.pdf` · Previous: [`L12e_xgboost_and_comparison.md`](L12e_xgboost_and_comparison.md)
 
 **Why this file exists.** The syllabus promises these topics up to the trees/ensembles lecture, but no lecture PDF covers them: **leakage and distribution shift** (syllabus L8), **validation design, baselines and ablations** (L12, L17), **optimization: learning rates, convergence, SGD** (L9–L10), **regression diagnostics** (L12), **multiclass classification** (L14–L15), **trees II: regression splits, categorical features, missing values, feature importance** (L19), and **KNN and the curse of dimensionality** (L21, scheduled before SVMs). They appear in the course objectives, so they can be examined. Everything here reuses the objects of L01–L12; the worked examples use the **twelve runs** of [L12a](L12a_decision_trees.md) where possible.
 

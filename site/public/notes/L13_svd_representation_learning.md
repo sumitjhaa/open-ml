@@ -1,7 +1,7 @@
 # SVD and Representation Learning
 
 > ES 335 / ES 678 Machine Learning, Sem I 2026
-> Sources: the syllabus calendar lists "PCA and representation learning: derive PCA intuition; use eigenvectors/SVD for dimensionality reduction and denoising". The course handbook `Lectures/L13b_unsupervised_learning_handbook.pdf` covers the same SVD material in section 4.2.5. The rest of these notes are written from standard material and build on the eigen-direction notes.
+> Sources: the syllabus calendar lists "PCA and representation learning: derive PCA intuition; use eigenvectors/SVD for dimensionality reduction and denoising". The course handbook `sources/course-2026/lectures/L13b_unsupervised_learning_handbook.pdf` covers the same SVD material in section 4.2.5. The rest of these notes are written from standard material and build on the eigen-direction notes.
 
 **What this file is really about:**
 

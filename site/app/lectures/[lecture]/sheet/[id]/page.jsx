@@ -6,7 +6,7 @@ export const generateStaticParams = () => LECTURES.flatMap(l => (l.sheets ?? [])
 export async function generateMetadata({ params }) {
   const { lecture, id } = await params;
   const s = getLecture(lecture)?.sheets?.find(x => x.id === id);
-  return { title: s ? `${s.label} · ml-sensei` : 'ml-sensei' };
+  return { title: s ? `Epocher - ${s.label}` : 'Epocher' };
 }
 
 export default async function Sheet({ params }) {

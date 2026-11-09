@@ -1,4 +1,4 @@
-// Copies each section's notes, images and tutorial sheets into public/. ../markdown-notes stays the single source of truth;
+// Copies each section's notes, images and tutorial sheets into public/. ../notes stays the single source of truth;
 // the published copy drops emoji markers, which keeps the source files untouched.
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { LECTURES } from '../lib/lectures.mjs';
@@ -30,10 +30,10 @@ function publish(file, source) {
 mkdirSync('public/notes', { recursive: true });
 mkdirSync('public/tutorials', { recursive: true });
 for (const { notes, sheets } of LECTURES) {
-  for (const s of sheets ?? []) cpSync(`../Tutorials/${s.file}`, `public/tutorials/${s.file}`);
+  for (const s of sheets ?? []) cpSync(`../sources/course-2026/tutorials/${s.file}`, `public/tutorials/${s.file}`);
   for (const { file } of notes) {
-    writeFileSync(`public/notes/${file}.md`, publish(file, readFileSync(`../markdown-notes/${file}.md`, 'utf8')));
-    const img = `../markdown-notes/images/${file.split('_')[0]}`; // e.g. images/L01
+    writeFileSync(`public/notes/${file}.md`, publish(file, readFileSync(`../notes/${file}.md`, 'utf8')));
+    const img = `../notes/images/${file.split('_')[0]}`; // e.g. images/L01
     if (existsSync(img)) cpSync(img, `public/images/${file.split('_')[0]}`, { recursive: true });
   }
 }

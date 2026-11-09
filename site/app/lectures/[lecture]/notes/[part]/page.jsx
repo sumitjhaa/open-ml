@@ -12,14 +12,16 @@ import Link from 'next/link';
 import { findNote, getLecture } from '../../../../../lib/lectures.mjs';
 import NoteToc from '../../../../../components/NoteToc';
 import ZoomImage from '../../../../../components/ZoomImage';
+import { highlight } from '../../../../../components/Code';
+import CodeBlock from '../../../../../components/CodeBlock';
 import { Button, Toolbar } from '../../../../../components/ui';
 
 export async function generateMetadata({ params }) {
   const { lecture, part } = await params, l = getLecture(lecture), n = l?.notes.find(x => x.id === part);
-  return { title: n ? `${n.label === 'Notes' ? l.title : n.label} · ml-sensei` : 'ml-sensei' };
+  return { title: n ? `Epocher - ${n.label === 'Notes' ? l.title : n.label}` : 'Epocher' };
 }
 
-// Notes image paths are relative to markdown-notes/; sync.mjs copies them to /images.
+// Notes image paths are relative to notes/; sync.mjs copies them to /images.
 function fixUrl(u) {
   if (/^(https?:|#|\/|mailto:)/.test(u)) return u;
   const [file, hash] = u.split('#'), hit = file.endsWith('.md') && findNote(file.slice(0, -3)); // links between lecture notes
@@ -62,6 +64,12 @@ function calloutOf(t) {
 }
 
 const components = {
+  pre({ children }) {
+    return <CodeBlock>{children}</CodeBlock>;
+  },
+  code({ className, children }) {
+    return <code className={className}>{/language-(python|py)/.test(className ?? '') ? highlight(textOf(children)) : children}</code>;
+  },
   // A paragraph holding an image (+ its *caption* line) becomes a sized <figure>.
   p({ node, children }) {
     const img = node.children.find(c => c.tagName === 'img');
@@ -89,7 +97,7 @@ const components = {
 
 // Puts each part in a coloured <section>, and turns heading numbers ("A4.", "Slide 6 —") into one consistent label.
 function decorate() {
-  const NUMBER = /^((?:Part [\w]+|Slide \d+|Slides \d+[–-]\d+|Page \d+|Pages \d+[–-]\d+|A\d+|\d+))\s*(?:[.:—–]\s*)/;
+  const NUMBER = /^((?:Part [\w]+|Slide \d+|Slides \d+[–-]\d+|Page \d+|Pages \d+[–-]\d+|[AB]\d+|\d+))\s*(?:[.:—–]\s*)/;
   return tree => {
     const walk = n => {
       for (const c of n.children ?? []) {

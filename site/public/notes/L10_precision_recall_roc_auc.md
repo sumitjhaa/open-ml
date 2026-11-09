@@ -1,7 +1,7 @@
 # Precision, Recall, ROC and Cost-Based Decisions
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia (15 September 2026)
-> Source: `Lectures/L10_student_precision_recall_roc_auc.pdf` (50 slides) · Previous: [`L09_metrics_thresholds_costs.md`](L09_metrics_thresholds_costs.md) · Next: [`L11_support_vector_machines.md`](L11_support_vector_machines.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L10_student_precision_recall_roc_auc.pdf` (50 slides) · Previous: [`L09_metrics_thresholds_costs.md`](L09_metrics_thresholds_costs.md) · Next: [`L11_support_vector_machines.md`](L11_support_vector_machines.md)
 
 **How to use this file.** Lecture 9 introduced the metrics on 400 roads. Lecture 10 rebuilds them **slowly, one observation at a time**, on **8 roads** you can count on your fingers, and adds three new ideas: **precision depends on prevalence**, **why F1 uses the harmonic mean** (with a proof), and **expected cost per observation as prevalence changes** (with iso-cost lines that depend on $\pi$). Part A collects the maths; Part B walks all 50 slides; Part C is practice. If something here feels fast, the matching section of [L09 Part A](L09_metrics_thresholds_costs.md#part-a--maths-from-the-ground-up) has the long version.
 
@@ -247,7 +247,7 @@ Two different knobs that people often confuse:
 
 ## Slide 1 — Title
 
-*Precision, Recall, ROC and Cost-Based Decisions.* Prof. Udit Bhatia, 15 September 2026.
+*Precision, Recall, ROC and Cost-Based Decisions.*
 
 ## Slide 2 — Where this fits in our course
 

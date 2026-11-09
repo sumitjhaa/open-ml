@@ -4,7 +4,7 @@ import Shell from '../components/Shell';
 import { THEMES, themeCss } from '../lib/themes.mjs';
 
 export const metadata = {
-  title: 'ml-sensei',
+  title: 'Epocher',
   description: 'ES 335 / ES 678 Machine Learning — interactive explorers, maths from the ground up, full lecture notes.',
 };
 

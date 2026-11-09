@@ -31,9 +31,10 @@ export function Status({ as: C = 'p', tone, className, ...props }) {
   return <C className={cx(tone, className)} {...props} />;
 }
 
-export function NavItem({ as: C = 'a', active, trailing, className, children, ...props }) {
+export function NavItem({ as: C = 'a', active, leading, trailing, className, children, ...props }) {
   return (
     <C className={cx('nav-item', active && 'is-on', className)} aria-current={active ? 'page' : undefined} {...props}>
+      {leading}
       <span className="label">{children}</span>
       {trailing}
     </C>

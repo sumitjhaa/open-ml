@@ -20,17 +20,30 @@ import * as Unsupervised from '../../../../../explorers/unsupervised';
 import * as Clusters from '../../../../../explorers/clusters';
 import * as Reduction from '../../../../../explorers/reduction';
 import * as Anomaly from '../../../../../explorers/anomaly';
+import * as Classical from '../../../../../explorers/classical';
+import * as Neuralnets from '../../../../../explorers/neuralnets';
+import * as Vision from '../../../../../explorers/vision';
+import * as Sequences from '../../../../../explorers/sequences';
+import * as Additions from '../../../../../explorers/additions';
+import * as Modern from '../../../../../explorers/modern';
+import * as Beyond from '../../../../../explorers/beyond';
+import * as Deeplearning from '../../../../../explorers/deeplearning';
+import * as Moreml from '../../../../../explorers/moreml';
+import * as Frontier from '../../../../../explorers/frontier';
+import * as Extensions from '../../../../../explorers/extensions';
+import * as Dlviz from '../../../../../explorers/dlviz';
+import * as Coverage from '../../../../../explorers/coverage';
 import * as Gaps from '../../../../../explorers/gaps';
 import * as Completions from '../../../../../explorers/completions';
 
 // Each catalogue row in lib/lectures.mjs names one of these modules.
-const MODULES = { L01, Maths, Regression, Evaluation, Svm, Trees, Practice, Foundations, Modelling, Methods, Tutorials, Unsupervised, Clusters, Reduction, Anomaly, Gaps, Completions };
+const MODULES = { Coverage, Dlviz, Extensions, Frontier, L01, Maths, Regression, Evaluation, Svm, Trees, Practice, Foundations, Modelling, Methods, Tutorials, Unsupervised, Clusters, Reduction, Anomaly, Classical, Neuralnets, Vision, Sequences, Additions, Modern, Beyond, Deeplearning, Moreml, Gaps, Completions };
 
 export const generateStaticParams = () => LECTURES.flatMap(l => l.explorers.map(e => ({ lecture: l.id, id: e.id })));
 export async function generateMetadata({ params }) {
   const { lecture, id } = await params;
   const e = getLecture(lecture)?.explorers.find(x => x.id === id);
-  return { title: e ? `${e.title} · ml-sensei` : 'ml-sensei' };
+  return { title: e ? `Epocher - ${e.title}` : 'Epocher' };
 }
 
 export default async function Explorer({ params }) {

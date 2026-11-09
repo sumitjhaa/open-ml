@@ -1,7 +1,7 @@
 # From the Normal Equation to PCA: Eigen-directions
 
-> ES 335 / ES 678 Machine Learning, Sem I 2026 — Prof. Udit Bhatia, Prof. Krishna Prasad Miyapuram
-> Source: `Lectures/L05_normal_equation_eigendirections_pca.pdf` (35 slides) · Previous: [`L04_linear_regression_loss_projection.md`](L04_linear_regression_loss_projection.md)
+> ES 335 / ES 678 Machine Learning, Sem I 2026
+> Source: `sources/course-2026/lectures/L05_normal_equation_eigendirections_pca.pdf` (35 slides) · Previous: [`L04_linear_regression_loss_projection.md`](L04_linear_regression_loss_projection.md)
 
 **How to use this file.** Part A builds the *new* maths Lecture 5 needs, on top of Lectures 1–4 (gradients of matrix expressions, Gram matrix $X^\top X$, PSD, rank, projection). Most of it is **eigenvalues and eigenvectors**, the **spectral theorem**, **covariance** and **Lagrange multipliers**. Part B goes through all 35 slides. The "work it out" slides are solved in this PDF; here every step is expanded and checked with numbers, and extra worked examples are added where the slide only gives symbols. Part C is practice.
 
@@ -343,7 +343,7 @@ So **the reconstruction error is exactly the sum of the discarded eigenvalues** 
 
 ## Slide 1 — Title
 
-*Lecture 5: From the Normal Equation to PCA.* Prof. Udit Bhatia, Civil Engineering; Computer Science and Engineering, Semester I 2026.
+*Lecture 5: From the Normal Equation to PCA.*
 
 ## Slide 2 — Course Roadmap: You Are Here
 

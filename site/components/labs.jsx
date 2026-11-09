@@ -15,6 +15,13 @@ export const curve = (f, a, b, n = 201) => linspace(a, b, n).map(x => [x, f(x)])
 export const int = (r, a, b) => a + Math.floor(r() * (b - a + 1));
 export const pick = (r, a) => a[Math.floor(r() * a.length)];
 export const mat = A => R`\begin{bmatrix}${A.map(row => row.join('&')).join(R`\\`)}\end{bmatrix}`;
+export const heatPlot = (M, o = {}) => ({ bare: true, x: [0, M[0].length], y: [0, M.length], w: o.w ?? 400, h: o.h ?? Math.round(30 + (o.w ?? 400) * (M.length / M[0].length) * 0.86), label: o.label ?? 'heatmap', caption: o.caption, marks: [{ as: 'heat', data: M, ...o.heat }, ...(o.over ?? [])] });
+// Outline a cell of a heatPlot; a null index outlines the whole row or column.
+export const heatBox = (M, i, j) => { const R = M.length, C = M[0].length, x0 = j ?? 0, x1 = j == null ? C : j + 1, y1 = i == null ? R : R - i, y0 = i == null ? 0 : R - i - 1; return { tone: 'fg', data: [[x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, y0]] }; };
+// Stacked densities: one baseline per row, so a change across layers or time reads at a glance.
+export const ridge = (rows, x, h = 0.9) => { const top = Math.max(1e-9, ...rows.flatMap(r => r.d)), r6 = v => +v.toFixed(6); return rows.flatMap((r, i) => { const base = rows.length - 1 - i; return [{ as: 'area', tone: r.tone ?? 1, data: x.map((v, k) => [v, base, r6(base + (h * r.d[k] * 1.5) / top)]) }, { tone: r.tone ?? 1, data: x.map((v, k) => [v, r6(base + (h * r.d[k] * 1.5) / top)]) }, { as: 'label', x: x[0], y: base + 0.1, text: r.label }]; }); };
+const smooth = c => c.map((_, i) => (0.25 * (c[i - 1] ?? 0) + 0.5 * c[i] + 0.25 * (c[i + 1] ?? 0)));
+export const histDensity = (xs, a, b, n) => { const c = Array(n).fill(0), w = (b - a) / n; xs.forEach(v => { const i = Math.floor((v - a) / w); if (i >= 0 && i < n) c[i]++; }); return smooth(smooth(smooth(c))).map(v => v / (xs.length * w)); };
 
 // "plain **bold** and $maths$" to elements.
 export function rich(s) {

@@ -3,11 +3,12 @@ import { notFound } from 'next/navigation';
 import M from '../../../components/M';
 import { Button, Card, Toolbar } from '../../../components/ui';
 import { LECTURES, LEVELS, getLecture } from '../../../lib/lectures.mjs';
+import { notebooksOf } from '../../../lib/notebooks.mjs';
 
 export const generateStaticParams = () => LECTURES.map(l => ({ lecture: l.id }));
 export async function generateMetadata({ params }) {
   const l = getLecture((await params).lecture);
-  return { title: l ? `${l.title} · ml-sensei` : 'ml-sensei' };
+  return { title: l ? `Epocher - ${l.title}` : 'Epocher' };
 }
 
 export default async function Overview({ params }) {
@@ -49,6 +50,11 @@ export default async function Overview({ params }) {
           </div>
         </section>
       ))}
+        <section>
+          <h2 className="level-head">Code and resources</h2>
+          <Toolbar><Button as={Link} href={`${base}/resources`}>Slides, cheat sheets and videos</Button></Toolbar>
+          <div className="grid">{notebooksOf(lec.id).map(n => <Card as={Link} key={n.id} href={`${base}/notebook/${n.id}`}><h3>{n.title}</h3><p>Notebook with code and output</p></Card>)}</div>
+        </section>
     </div>
   );
 }

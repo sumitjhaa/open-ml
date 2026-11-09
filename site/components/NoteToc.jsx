@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { rich } from './labs';
 
 // items: [{ id, depth, text }] from the rendered note. Depth 1 is a part; its sections only unfold while you are in it.
@@ -18,9 +18,17 @@ export default function NoteToc({ items }) {
     scan();
     return () => { document.removeEventListener('scroll', onScroll, true); cancelAnimationFrame(raf); };
   }, [items]);
+  const nav = useRef(null);
+  // Keep the active entry visible: scroll only the rail, never the page.
+  useEffect(() => {
+    const rail = nav.current, el = rail?.querySelector('a.is-on') ?? rail?.querySelector('a.is-here');
+    if (!el || rail.scrollHeight <= rail.clientHeight) return;
+    const r = rail.getBoundingClientRect(), a = el.getBoundingClientRect();
+    rail.scrollTo({ top: rail.scrollTop + a.top - r.top - (r.height - a.height) / 2, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }, [current]);
   const inPart = p => p.id === current || p.kids.some(k => k.id === current);
   return (
-    <nav className={`note-toc ${open ? 'is-open' : ''}`} aria-label="On this page">
+    <nav ref={nav} className={`note-toc ${open ? 'is-open' : ''}`} aria-label="On this page">
       <button type="button" className="btn btn-push toc-toggle" aria-expanded={open} onClick={() => setOpen(o => !o)}>On this page</button>
       <p className="grouphead">On this page</p>
       <ul>
