@@ -151,6 +151,8 @@ console.log('theme checks passed');
 
 // Catalogue rules: section and explorer names carry no numbers, every section has at least ten explorers across all levels.
 const { LECTURES } = await import('../lib/lectures.mjs');
+const { NAV } = await import('../lib/nav.mjs');
+assert.deepEqual(NAV.map(l => [l.id, l.notes.length, l.explorers.length]), LECTURES.map(l => [l.id, l.notes.length, l.explorers.length]), 'lib/nav.mjs is stale: run scripts/sync.mjs');
 const { hasGuide } = await import('../lib/guides.mjs');
 const { STEPUPS } = await import('../lib/stepups.mjs');
 for (const l of LECTURES) for (const n of l.notes) assert.ok(STEPUPS[n.file], `no step-up path: ${n.file}`);

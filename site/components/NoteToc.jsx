@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { rich } from './labs';
 
-// items: [{ id, depth, text }] from the rendered note. Depth 1 is a part; its sections only unfold while you are in it.
+// items: [{ id, depth, text, label }] from the rendered note; label is drawn on the server, so this page ships no maths library. Depth 1 is a part; its sections only unfold while you are in it.
 export default function NoteToc({ items }) {
   const parts = useMemo(() => {
     const out = [{ id: items[0]?.id, text: 'Overview', kids: [] }];
@@ -34,8 +33,8 @@ export default function NoteToc({ items }) {
       <ul>
         {parts.map(p => (
           <li key={p.id}>
-            <a href={`#${p.id}`} className={`toc-part ${inPart(p) ? 'is-here' : ''}`}>{rich(p.text)}</a>
-            {inPart(p) && p.kids.length > 0 && <ul>{p.kids.map(k => <li key={k.id}><a href={`#${k.id}`} className={k.id === current ? 'is-on' : ''}>{rich(k.text)}</a></li>)}</ul>}
+            <a href={`#${p.id}`} className={`toc-part ${inPart(p) ? 'is-here' : ''}`}>{p.label ?? p.text}</a>
+            {inPart(p) && p.kids.length > 0 && <ul>{p.kids.map(k => <li key={k.id}><a href={`#${k.id}`} className={k.id === current ? 'is-on' : ''}>{k.label}</a></li>)}</ul>}
           </li>
         ))}
       </ul>

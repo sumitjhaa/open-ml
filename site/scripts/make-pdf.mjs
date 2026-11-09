@@ -28,7 +28,7 @@ try {
   for (const [l, n] of LECTURES.flatMap(x => x.notes.map(y => [x, y]))) {
     const out = `public/notes/${n.file}.pdf`;
     execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--virtual-time-budget=15000',
-      `--print-to-pdf=${out}`, `${base}/lectures/${l.id}/notes/${n.id}?print=1`], { stdio: 'inherit' });
+      `--print-to-pdf=${out}`, `${base}/lectures/${l.id}/notes/${n.id}/print`], { stdio: 'inherit' });
     console.log('wrote', out);
   }
 } finally {

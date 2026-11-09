@@ -5,11 +5,13 @@
 //   truths  common confusions: judge each statement, then read why
 import { useMemo, useState } from 'react';
 import M from './M';
+import { rich } from './rich';
 import { Mark, Plot } from './Plot';
 import { Button, Choice, Field, Legend, Note, Row, Slider, Stack, Stat, Status, Table, Takeaway, Toolbar } from './ui';
 import { rng } from '../lib/math.mjs';
 import { fmt, linspace } from '../lib/models.mjs';
 
+export { rich };
 export const R = String.raw;
 export const curve = (f, a, b, n = 201) => linspace(a, b, n).map(x => [x, f(x)]);
 export const int = (r, a, b) => a + Math.floor(r() * (b - a + 1));
@@ -23,11 +25,6 @@ export const ridge = (rows, x, h = 0.9) => { const top = Math.max(1e-9, ...rows.
 const smooth = c => c.map((_, i) => (0.25 * (c[i - 1] ?? 0) + 0.5 * c[i] + 0.25 * (c[i + 1] ?? 0)));
 export const histDensity = (xs, a, b, n) => { const c = Array(n).fill(0), w = (b - a) / n; xs.forEach(v => { const i = Math.floor((v - a) / w); if (i >= 0 && i < n) c[i]++; }); return smooth(smooth(smooth(c))).map(v => v / (xs.length * w)); };
 
-// "plain **bold** and $maths$" to elements.
-export function rich(s) {
-  if (typeof s !== 'string') return s;
-  return s.split(/(\$[^$]+\$|\*\*[^*]+\*\*)/).map((p, i) => (p[0] === '$' && p.length > 1 ? <M key={i} t={p.slice(1, -1)} /> : p.startsWith('**') ? <b key={i}>{rich(p.slice(2, -2))}</b> : p));
-}
 
 const places = step => (String(step).split('.')[1] ?? '').length;
 

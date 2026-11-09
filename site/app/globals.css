@@ -399,3 +399,4 @@ details[open] > summary .if-open { display: inline; }
 .mark-graph text { fill: var(--fg); font-size: 12.5px; pointer-events: none; }
 .mark-heat rect.dense { stroke: none; shape-rendering: crispEdges; }
 .mark-graph text.sub { fill: var(--fg); opacity: .78; font-size: 11px; font-variant-numeric: tabular-nums; }
+@media screen { .nb-cell { content-visibility: auto; contain-intrinsic-size: auto 220px; } }

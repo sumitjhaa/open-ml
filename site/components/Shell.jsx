@@ -2,7 +2,8 @@
 import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LEVELS, getLecture, inCourse } from '../lib/lectures.mjs';
+import { LEVELS, getLecture, inCourse } from '../lib/nav.mjs';
+import HoverLink from './HoverLink';
 import { notebooksOf } from '../lib/notebooks.mjs';
 import ThemePicker from './ThemePicker';
 import { NavItem } from './ui';
@@ -91,14 +92,14 @@ export default function Shell({ children }) {
   const shown = lec ?? sections[0]; // outside a lecture (home), the topics column still has something to show
   const active = lec && ['notes', 'explore', 'sheet', 'notebook', 'resources'].includes(kind) ? `${kind}/${eid}` : null;
   const notebooks = notebooksOf(shown.id);
-  const row = l => <NavItem key={l.id} as={Link} href={`/lectures/${l.id}`} active={lec?.id === l.id}>{l.title}</NavItem>;
+  const row = l => <NavItem key={l.id} as={HoverLink} href={`/lectures/${l.id}`} active={lec?.id === l.id}>{l.title}</NavItem>;
   return (
     <div className="app">
       {/* A mouse click should not leave focus behind, or a later key press draws a focus ring on the old tab. Keyboard activation has detail 0. */}
       <aside className="sidebar" onClick={e => { if (e.detail > 0) e.target.closest('a, button')?.blur(); }}>
         <Column id="course" title="ML" head={<Link href="/" className="brand"><LogoMark />Epocher</Link>} col={cols.course} update={update} className="course" footer={<ThemePicker />}>
-          <NavItem as={Link} href="/" active={course === 'ml'} leading={<AttentionIcon />}>ML</NavItem>
-          <NavItem as={Link} href="/dl" active={course === 'dl'} leading={<AttentionMatrixIcon />}>DL</NavItem>
+          <NavItem as={HoverLink} href="/" active={course === 'ml'} leading={<AttentionIcon />}>ML</NavItem>
+          <NavItem as={HoverLink} href="/dl" active={course === 'dl'} leading={<AttentionMatrixIcon />}>DL</NavItem>
         </Column>
         <Column id="lectures" title="Lectures" head={<ColumnHead tone="1">Lectures</ColumnHead>} col={cols.lectures} update={update} className="lectures">
           <nav className="group" aria-label="Lectures">{sections.filter(l => !l.sheets).map(row)}</nav>
@@ -108,20 +109,20 @@ export default function Shell({ children }) {
         <Column id="topics" title="Topics" head={<ColumnHead tone="1">Topics</ColumnHead>} col={cols.topics} update={update} className="topics">
           <nav className="group" aria-label={`Topics in ${shown.title}`}>
             {shown.notes.length > 1 && <GroupHead tone="fg">Notes</GroupHead>}
-            {shown.notes.map(n => <NavItem key={n.id} as={Link} href={`/lectures/${shown.id}/notes/${n.id}`} active={active === `notes/${n.id}`}>{n.label}</NavItem>)}
+            {shown.notes.map(n => <NavItem key={n.id} as={HoverLink} href={`/lectures/${shown.id}/notes/${n.id}`} active={active === `notes/${n.id}`}>{n.label}</NavItem>)}
             {shown.sheets && <GroupHead tone="fg">Worksheets</GroupHead>}
-            {shown.sheets?.map(s => <NavItem key={s.id} as={Link} href={`/lectures/${shown.id}/sheet/${s.id}`} active={active === `sheet/${s.id}`}>{s.label}</NavItem>)}
+            {shown.sheets?.map(s => <NavItem key={s.id} as={HoverLink} href={`/lectures/${shown.id}/sheet/${s.id}`} active={active === `sheet/${s.id}`}>{s.label}</NavItem>)}
             {LEVELS.map(([level, label]) => (
               <Fragment key={level}>
                 <GroupHead tone={LEVEL_TONE[level]}>{label}</GroupHead>
                 {shown.explorers.filter(e => e.level === level).map(e => (
-                  <NavItem key={e.id} as={Link} href={`/lectures/${shown.id}/explore/${e.id}`} active={active === `explore/${e.id}`}>{e.title}</NavItem>
+                  <NavItem key={e.id} as={HoverLink} href={`/lectures/${shown.id}/explore/${e.id}`} active={active === `explore/${e.id}`}>{e.title}</NavItem>
                 ))}
               </Fragment>
             ))}
             <GroupHead tone="fg">Code and resources</GroupHead>
-            <NavItem as={Link} href={`/lectures/${shown.id}/resources`} active={kind === 'resources' && lec?.id === shown.id}>Slides, cheat sheets and videos</NavItem>
-            {notebooks.map(n => <NavItem key={n.id} as={Link} href={`/lectures/${shown.id}/notebook/${n.id}`} active={active === `notebook/${n.id}`}>{n.title}</NavItem>)}
+            <NavItem as={HoverLink} href={`/lectures/${shown.id}/resources`} active={kind === 'resources' && lec?.id === shown.id}>Slides, cheat sheets and videos</NavItem>
+            {notebooks.map(n => <NavItem key={n.id} as={HoverLink} href={`/lectures/${shown.id}/notebook/${n.id}`} active={active === `notebook/${n.id}`}>{n.title}</NavItem>)}
           </nav>
         </Column>
       </aside>

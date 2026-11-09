@@ -57,10 +57,22 @@ const GEOMETRY = {
   // fn(x, y) in [-1, 1]: positive shades tones[0], negative tones[1]. `bands` quantizes it into filled contours.
   field: ({ fn, bands, nx = bands ? 84 : 54, ny = bands ? 68 : 36, tones = [1, 2] }, { sx, sy, dom: [x0, x1, y0, y1] }) => {
     const dx = (x1 - x0) / nx, dy = (y1 - y0) / ny, W = (Math.abs(sx(x0 + dx) - sx(x0)) + 0.6).toFixed(1), H = (Math.abs(sy(y0 + dy) - sy(y0)) + 0.6).toFixed(1), out = [];
-    for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
-      let v = fn(x0 + (i + 0.5) * dx, y0 + (j + 0.5) * dy);
-      if (bands) v = Math.round(v * bands) / bands;
-      if (Math.abs(v) > 0.01) out.push(<rect key={i + '-' + j} x={sx(x0 + i * dx).toFixed(1)} y={sy(y0 + (j + 1) * dy).toFixed(1)} width={W} height={H} fill={`color-mix(in srgb, var(--c${v > 0 ? tones[0] : tones[1]}) ${Math.round(Math.min(Math.abs(v), 1) * 62)}%, var(--bg))`} />);
+    for (let i = 0; i < nx; i++) {
+      // Adjacent cells of one colour become one rectangle, which cuts the page size and the work on every slider move.
+      let run = null;
+      const flush = () => {
+        if (run) out.push(<rect key={i + '-' + run.from} x={sx(x0 + i * dx).toFixed(1)} y={sy(y0 + (run.to + 1) * dy).toFixed(1)} width={W} height={(Math.abs(sy(y0 + (run.to + 1) * dy) - sy(y0 + run.from * dy)) + 0.6).toFixed(1)} fill={run.fill} />);
+        run = null;
+      };
+      for (let j = 0; j < ny; j++) {
+        let v = fn(x0 + (i + 0.5) * dx, y0 + (j + 0.5) * dy);
+        if (bands) v = Math.round(v * bands) / bands;
+        if (Math.abs(v) <= 0.01) { flush(); continue; }
+        const fill = `color-mix(in srgb, var(--c${v > 0 ? tones[0] : tones[1]}) ${Math.round(Math.min(Math.abs(v), 1) * 62)}%, var(--bg))`;
+        if (run?.fill === fill) run.to = j;
+        else { flush(); run = { from: j, to: j, fill }; }
+      }
+      flush();
     }
     return out;
   },

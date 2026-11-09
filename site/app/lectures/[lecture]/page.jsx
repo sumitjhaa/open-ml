@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import HoverLink from '../../../components/HoverLink';
 import { notFound } from 'next/navigation';
 import M from '../../../components/M';
 import { Button, Card, Toolbar } from '../../../components/ui';
@@ -42,7 +43,7 @@ export default async function Overview({ params }) {
           <h2 className="level-head">{label}</h2>
           <div className="grid">
             {lec.explorers.filter(e => e.level === level).map(e => (
-              <Card as={Link} key={e.id} href={`${base}/explore/${e.id}`}>
+              <Card as={HoverLink} key={e.id} href={`${base}/explore/${e.id}`}>
                 <h3>{e.title}</h3>
                 <p>{e.blurb}</p>
               </Card>
@@ -53,7 +54,7 @@ export default async function Overview({ params }) {
         <section>
           <h2 className="level-head">Code and resources</h2>
           <Toolbar><Button as={Link} href={`${base}/resources`}>Slides, cheat sheets and videos</Button></Toolbar>
-          <div className="grid">{notebooksOf(lec.id).map(n => <Card as={Link} key={n.id} href={`${base}/notebook/${n.id}`}><h3>{n.title}</h3><p>Notebook with code and output</p></Card>)}</div>
+          <div className="grid">{notebooksOf(lec.id).map(n => <Card as={HoverLink} key={n.id} href={`${base}/notebook/${n.id}`}><h3>{n.title}</h3><p>Notebook with code and output</p></Card>)}</div>
         </section>
     </div>
   );

@@ -42,7 +42,7 @@ export default async function Notebook({ params }) {
           // Notebook text comes from outside this site: raw HTML and images in it are dropped.
           <Markdown key={i} skipHtml disallowedElements={['img']} unwrapDisallowed remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[[rehypeKatex, { strict: false, throwOnError: false }]]} components={mdComponents}>{c.md}</Markdown>
         ) : (
-          <div key={i}>
+          <div key={i} className="nb-cell">
             <CodeBlock><code>{highlight(c.code)}</code></CodeBlock>
             {c.out.map((o, j) => (o.img ? (
               <figure key={j} className="fig fig-mid"><ZoomImage src={o.img} alt={`Output of cell ${i + 1}`} width={o.w} height={o.h} loading="lazy" /></figure>
